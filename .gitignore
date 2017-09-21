@@ -1,3 +1,9 @@
+#directories to ignore
+build/
+node_modules/
+src_img/
+versions/
+
 # Logs
 logs
 *.log

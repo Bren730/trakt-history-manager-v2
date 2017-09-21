@@ -1,0 +1,21 @@
+{
+  "name": "web",
+  "description": "Trakt History Manager",
+  "main": "gulpfile.js",
+  "authors": [
+    "Brendan Spijkerman"
+  ],
+  "license": "ISC",
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "clusterize": "^0.17.6"
+  }
+}

@@ -1,0 +1,174 @@
+
+@watched-list-item-width: 200px;
+@watched-list-item-height: 300px;
+@margin: 10px;
+@transition: all 0.5s ease;
+
+.watched-list-item {
+
+  width: @watched-list-item-width;
+  height: @watched-list-item-height;
+  position: relative;
+  box-sizing: border-box;
+
+  margin: 10px;
+  padding: 0;
+  overflow: hidden;
+  background-color: #F1F1F1;
+  border-radius: 5px;
+
+  list-style: none;
+
+  background-image: url('/static/img/placeholder-2.jpg');
+  background-size: cover;
+
+  h1, h2, h3, p {
+
+    padding: 0;
+    margin: 0;
+
+  }
+
+  &.selected {
+
+    .watched-list-item-details {
+
+      transform: translate3d(0, 0, 0);
+
+      &::before {
+
+        transform: translate3d(0, 0, 0);
+      }
+
+      .watch-date-container {
+        transform: translate3d(0, 0, 0);
+      }
+
+      .episode-details {
+        transform: translate3d(0, 0, 0);
+      }
+
+    }
+
+  }
+
+  .watched-list-item-details {
+
+    @watched-list-item-details-height: 100px;
+    @watched-list-item-details-height-diff: @watched-list-item-height - @watched-list-item-details-height;
+
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+
+    transition: @transition;
+    transform: translate3d(0, @watched-list-item-details-height-diff, 0);
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 10px;
+    box-sizing: border-box;
+    color: #FFFFFF;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    background-image: inherit;
+    background-size: cover;
+
+    & * > {
+      z-index: 1;
+    }
+
+    h2 {
+      font-size: 12pt;
+      font-weight: 500;
+      position: absolute;
+      top: @margin;
+      left: @margin;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+
+    .subtitle {
+      width: @watched-list-item-width - (2 * @margin);
+      box-sizing: border-box;
+      font-size: 10pt;
+      font-weight: 300;
+      position: absolute;
+      top: @margin + 20px;
+      left:@margin;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      overflow: hidden;
+    }
+
+    @date-font-size: 9pt;
+
+    .watch-date-container {
+      position: absolute;
+      bottom: @margin;
+      left: @margin;
+      transition: @transition;
+      transform: translate3d(0, -@watched-list-item-details-height-diff, 0);
+
+      font-size: @date-font-size;
+
+      .watch-date {
+
+        font-size: 10pt;
+
+      }
+    }
+
+    .episode-details {
+      position: absolute;
+      right: @margin;
+      bottom: @margin;
+      font-size: 2 * @date-font-size;
+      line-height: 1em;
+      font-weight: 200;
+      transition: @transition;
+      transform: translate3d(0, -@watched-list-item-details-height-diff, 0);
+    }
+
+    &::before {
+
+      @padding: 16px;
+
+      content: '';
+      transition: @transition;
+      background-image: inherit;
+      background-size: cover;
+      background-position: center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      margin: -@padding;
+      width: @watched-list-item-width;
+      height: @watched-list-item-height;
+      transform: translate3d(0, -@watched-list-item-details-height-diff, 0);
+      z-index: 0;
+      padding: @padding;
+      filter: blur(10px) saturate(1.25);
+
+    }
+
+    &::after {
+
+      content: '';
+      background-color: rgba(0, 0, 0, 0.3);
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 0;
+
+    }
+
+  }
+}
